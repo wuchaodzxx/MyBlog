@@ -1,0 +1,36 @@
+#blogList{
+	height:800px;
+	overflow:hidden;
+	overflow-y:auto;
+}
+div.leftClassNameChild{
+	margin-left: 20px;
+
+}
+a{
+	color:#666;
+}
+a:hover{
+	color:#F78117;
+}
+#publishBlogDiv{
+	text-align: right;
+	margin:5px 15px 5px 0;
+}
+#showBlogChild{
+	background-color:#E1E6F6;
+	min-height:700px;
+	color:#000000;
+}
+
+
+#thisBlogTitle{
+	font-size:20px;
+	text-align: center;
+}
+#thisBlogDate{
+	font-size:15px;
+	text-align: right;
+	margin:5px 15px 5px 0;
+	
+}

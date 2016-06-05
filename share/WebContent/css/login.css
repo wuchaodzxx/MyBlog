@@ -1,0 +1,21 @@
+body{
+	margin:0;
+	background:url(../images/background.jpg);
+	vertical-align: middle;
+	color:#ffffff;
+}
+.formClass{
+	vertical-align: middle;
+	padding:300px 40%;
+}
+table{
+	width:250px;
+}
+.sendButton{
+	float:left;
+}
+
+.registButton{
+	margin:0 18px 0 0;
+	float:right;
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>404 IMG NO FOUND - easyicon.net</title>
+<style type="text/css"><!--
+body,p,h1{
+	color: #666;font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-weight:normal;
+}
+.info{text-align:center; height:300px; padding-top:100px;width:700px; border:0px solid #CCC; margin:0 auto;}
+img{ border:0px;}
+.footer{width:700px; text-align:right;margin:0 auto;}
+p a{color:#666}
+--></style>
+<script type='text/javascript'>
+var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+(function() {
+var gads = document.createElement('script');
+gads.async = true;
+gads.type = 'text/javascript';
+var useSSL = 'https:' == document.location.protocol;
+gads.src = (useSSL ? 'https:' : 'http:') + 
+'//www.googletagservices.com/tag/js/gpt.js';
+var node = document.getElementsByTagName('script')[0];
+node.parentNode.insertBefore(gads, node);
+})();
+</script>
+</head>
+<body>
+<div class="info">
+<img src="http://cdn-img.easyicon.net/png/5322/532268.gif" alt="404 IMG NO FOUND.">
+<H1>IMG NO FOUND.</H1>
+<p>404 Error<br/><br/><a href="http://www.easyicon.net"><img src="http://cdn-img.easyicon.net/image/404logo_mini.png"/></a></p>
+</div>
+</body>
+</html>

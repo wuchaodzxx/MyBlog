@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://www.springframework.org/schema/tx 
+       http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-3.0.xsd
+       http://www.springframework.org/schema/aop 
+       http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+	<!-- 启用注解注入 -->
+	<context:annotation-config />
+
+	<!-- 组件扫描 ，用于@Component、@Controller、@Service等注解的bean -->
+	<context:component-scan base-package="com.wuchao.Controller" />
+	<!-- 组件扫描 ，用于@Component、@Controller、@Service等注解的bean -->
+	<context:component-scan base-package="com.wuchao.Controller4Mobile" />
+	
+	
+	
+
+	<!-- @Aspect注解生效 -->
+	<aop:aspectj-autoproxy proxy-target-class="true" />
+
+	<!-- 注解声明事务必须使用这句 -->
+	<tx:annotation-driven />
+
+	<!-- 数据库属性文件 -->
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations" value="classpath:jdbc.properties" />
+	</bean>
+
+	<!-- 数据源 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+
+	<!-- sessionFactory -->
+	<bean id="mySessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="annotatedClasses">
+			<list>
+				<value>com.wuchao.Entity.User</value>
+				<value>com.wuchao.Entity.Documents</value>
+				<value>com.wuchao.Entity.FileClasses</value>
+				<value>com.wuchao.Entity.Attachment</value>
+				<value>com.wuchao.Entity.Blog</value>
+				<value>com.wuchao.Entity.BlogContent</value>
+				<value>com.wuchao.Entity.BlogClasses</value>
+				<value>com.wuchao.Entity.CommentOfDoc</value>
+				<value>com.wuchao.Entity.CommentOfBlog</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<value>
+				hibernate.dialect=org.hibernate.dialect.MySQLDialect
+				javax.persistence.validation.mode=none
+				hibernate.hbm2ddl.auto=update
+				connection.useUnicode=true
+				connection.characterEncoding=UTF-8
+				hibernate.show_sql=true
+				<!-- hibernate.current_session_context_class=thread -->
+			</value>
+		</property>
+	</bean>
+
+	
+
+	<!-- jdbc事务管理器 -->
+	<bean id="txManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+	<!-- hibernate事务管理器 -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="mySessionFactory" />
+	</bean>
+
+
+	<bean id="userDao" class="com.wuchao.dao.UserDaoImpl">
+		<property name="mySessionFactory" ref="mySessionFactory" />
+	</bean>
+	<bean id="documentsDao" class="com.wuchao.dao.DocumentsDaoImpl">
+		<property name="mySessionFactory" ref="mySessionFactory" />
+	</bean>
+	<bean id="attachmentDao" class="com.wuchao.dao.AttachmentDaoImpl">
+		<property name="mySessionFactory" ref="mySessionFactory" />
+	</bean>
+	<bean id="blogDao" class="com.wuchao.dao.BlogDaoImpl">
+		<property name="mySessionFactory" ref="mySessionFactory" />
+	</bean>
+	<bean id="commentOfDocDao" class="com.wuchao.dao.CommentOfDocDaoImpl">
+		<property name="mySessionFactory" ref="mySessionFactory" />
+	</bean>
+	<bean id="commentOfBlogDao" class="com.wuchao.dao.CommentOfBlogDaoImpl">
+		<property name="mySessionFactory" ref="mySessionFactory" />
+	</bean>
+	
+	<bean id="userService" class="com.wuchao.service.UserServiceImpl">
+		<property name="userDao" ref="userDao" />
+	</bean>
+	<bean id="documentsService" class="com.wuchao.service.DocumentsServiceImpl">
+		<property name="documentsDao" ref="documentsDao" />
+	</bean>
+	<bean id="blogService" class="com.wuchao.service.BlogServiceImpl">
+		<property name="blogDao" ref="blogDao" />
+	</bean>
+	<bean id="commentOfDocService" class="com.wuchao.service.CommentOfDocServiceImpl">
+		<property name="commentOfDocDao" ref="commentOfDocDao" />
+	</bean>
+	<bean id="commentOfBlogService" class="com.wuchao.service.CommentOfBlogServiceImpl">
+		<property name="commentOfBlogDao" ref="commentOfBlogDao" />
+	</bean>
+	<bean id="attachmentService" class="com.wuchao.service.AttachmentServiceImpl">
+		<property name="attachmentDao" ref="attachmentDao" />
+	</bean>
+	<bean id="fileUpLoadDao" class="com.wuchao.dao.FileUpLoadDaoImpl"/>
+	<bean id="fileUpLoadService" class="com.wuchao.service.FileUpLoadServiceImpl">
+		<property name="fileUpLoadDao" ref="fileUpLoadDao" />
+	</bean>
+	<bean id="ossDao" class="AliyunOSS.OSSDaoImpl"/>
+	<bean id="ossService" class="AliyunOSS.OSSServiceImpl">
+		<property name="ossDao" ref="ossDao" />
+	</bean>
+	<bean id="utils2Files" class="com.wuchao.utils.Utils2Files"/>
+	<bean id="test" class="com.wuchao.test.WorkTest"/>
+	
+
+ 	
+     
+
+     
+ 
+ 
+    
+</beans>

@@ -1,0 +1,39 @@
+
+.fileUpLoad{
+	
+	float:left;
+}
+
+.addClass{
+	color:#666;
+}
+
+.fileList{
+	float:left;
+	width:100%;
+	overflow:hidden;
+	overflow-y:auto;
+	height:700px;
+	
+}
+table{
+	width:100%;
+}
+table,td,tr{
+	border-collapse:collapse;
+	border:1px solid #666;
+}
+.tableTile{
+	text-align:center;
+	height:20%;
+}
+td.td_fileName{
+	width:40%;
+	word-break: break-all;   
+}
+div.left .classList a,a{
+	color:#666;
+}
+#selectedLeft,div.left .classList a:hover,a:hover{
+	color:#F78117;
+}
