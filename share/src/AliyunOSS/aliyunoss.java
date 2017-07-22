@@ -15,8 +15,8 @@ import com.aliyun.oss.model.ObjectListing;
 import com.aliyun.oss.model.ObjectMetadata;
 import com.aliyun.oss.model.PutObjectResult;
 public class aliyunoss {
-	static String accessKeyId = "X9L0Y8BrV2V4xkWo";
-	static String accessKeySecret = "hPC3Y4sbgkLGMIGDFjJ0VAFdikIsCd";
+	static String accessKeyId = "";
+	static String accessKeySecret = "";
 	// 以杭州为例
 	//static String endpoint = "http://oss-cn-qingdao-internal.aliyuncs.com"; //内网址
 	static String endpoint = "http://oss-cn-qingdao.aliyuncs.com";  //外网址
